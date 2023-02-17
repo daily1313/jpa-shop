@@ -1,17 +1,22 @@
-
-
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/jpashop
+    url: jdbc:h2:tcp://localhost/~/jpashop;
     username: sa
     password:
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
       ddl-auto: create
+      # 프로젝트 실행시 기존의 테이블 삭제, 새로 생성
     properties:
       hibernate:
         format_sql: true
+        # Query 모양 쉽게 표현
+        # show_sql: true
 logging.level:
   org.hibernate.SQL: debug
+  org.hibernate.type: trace
+  # 쿼리 파라미터 로그 남기기
+
+  #Log4j 설정
 
