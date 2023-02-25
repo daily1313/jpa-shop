@@ -1,4 +1,4 @@
-package jpabook.jpashop.repository;
+package jpabook.jpashop.repository.item;
 
 import java.util.List;
 import javax.persistence.EntityManager;
