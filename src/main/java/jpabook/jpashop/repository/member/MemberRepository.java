@@ -1,22 +1,24 @@
-package jpabook.jpashop.repository;
+package jpabook.jpashop.repository.member;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import jpabook.jpashop.domain.member.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+
+    private final EntityManager em;
     //스프링부트가 EntityManager 주입
     //@PersistenceContext 어노테이션이 있을 경우
-
     //Cmd + Shift + T (Test 코드)
     public void save(Member member) {
         em.persist(member);
+        // 영속성 컨텍스트에 멤버 객체를 올린다.
     }
 
     public Member findOne(Long id) {
