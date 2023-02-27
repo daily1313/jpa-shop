@@ -3,6 +3,7 @@ package jpabook.jpashop.service.order;
 
 import java.util.List;
 import jpabook.jpashop.domain.delivery.Delivery;
+import jpabook.jpashop.domain.delivery.DeliveryStatus;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.domain.member.Member;
 import jpabook.jpashop.domain.order.Order;
@@ -10,6 +11,7 @@ import jpabook.jpashop.domain.orderItem.OrderItem;
 import jpabook.jpashop.repository.item.ItemRepository;
 import jpabook.jpashop.repository.member.MemberRepository;
 import jpabook.jpashop.repository.order.OrderRepository;
+import jpabook.jpashop.repository.order.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
@@ -37,6 +39,7 @@ public class OrderService {
         //배송정보 생성
         Delivery delivery = new Delivery();
         delivery.setAddress(member.getAddress());
+        delivery.setStatus(DeliveryStatus.READY);
 
         //주문 상품 생성
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
@@ -58,8 +61,8 @@ public class OrderService {
         order.cancel();
     }
 
-//    //검색
-//    public List<Order> findOrders(OrderSerach orderSerach) {
-//        return orderRepository.findAll(orderSerach);
-//    }
+    //검색
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByString(orderSearch);
+    }
 }
