@@ -12,7 +12,7 @@
       <div class="form-group mx-sm-1 mb-2">
         <select th:field="*{orderStatus}" class="form-control"> <option value="">주문상태</option>
           <option th:each=
-                          "status : ${T(jpabook.jpashop.domain.OrderStatus).values()}"
+                          "status : ${T(jpabook.jpashop.domain.order.OrderStatus).values()}"
                   th:value="${status}"
                   th:text="${status}">option
           </option>
