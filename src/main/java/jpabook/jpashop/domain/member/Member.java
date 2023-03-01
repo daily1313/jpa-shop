@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 import jpabook.jpashop.domain.order.Order;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.tomcat.jni.Address;
 
 @Entity
 @Getter
